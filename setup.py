@@ -10,6 +10,9 @@ from setuptools import setup
 
 from pathlib import Path
 
+# Define HERE as the directory containing this script
+HERE = Path(__file__).parent
+
 # Assuming HERE is already defined as Path(__file__).parent
 libE57_cpp = sorted(map(str, (HERE / "libE57Format" / "src").glob("*.cpp")))
 
