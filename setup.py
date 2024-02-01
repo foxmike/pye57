@@ -79,7 +79,7 @@ class BuildExt(build_ext):
     def build_extensions(self):
         ct = self.compiler.compiler_type
         opts = []
-        revision_id = "pye57-" + version
+        revision_id = "pye57-" + "0.0.1"
         if ct == "unix":
             opts.append(f'-DVERSION_INFO="{version}"')
             opts.append(f'-DREVISION_ID="{revision_id}"')
