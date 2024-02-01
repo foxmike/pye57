@@ -116,7 +116,7 @@ print("About dict:", about)
 
 setup(
     name="pye57",
-    version = about.get("__version__", "0.0.1"),  # Fallback to "0.0.1" if __version__ is not found
+    version = "0.0.1",  # Fallback to "0.0.1" if __version__ is not found
     author="David Caron",
     author_email="dcaron05@gmail.com",
     url="https://www.github.com/davidcaron/pye57",
