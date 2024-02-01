@@ -8,14 +8,17 @@ from pathlib import Path
 from pybind11.setup_helpers import Pybind11Extension, build_ext
 from setuptools import setup
 
-HERE = Path(__file__).parent
+from pathlib import Path
 
-about = {}
-with open(HERE / "src" / "pye57" / "__version__.py") as f:
-    exec(f.read(), about)
-version = about["__version__"]
-
+# Assuming HERE is already defined as Path(__file__).parent
 libE57_cpp = sorted(map(str, (HERE / "libE57Format" / "src").glob("*.cpp")))
+
+# Convert each absolute path in libE57_cpp to a relative path
+libE57_cpp_relative = [str(path.relative_to(HERE)) for path in map(Path, libE57_cpp)]
+
+print("Debugging libE57_cpp relative paths:")
+for path in libE57_cpp_relative:
+    print(path)
 
 libraries = []
 library_dirs = []
@@ -55,7 +58,7 @@ for path in libE57_cpp:
 ext_modules = [
     Pybind11Extension(
         "pye57.libe57",
-        ["src/pye57/libe57_wrapper.cpp"] + libE57_cpp,
+        ["src/pye57/libe57_wrapper.cpp"] + libE57_cpp_relative,  # Use relative paths
         define_macros=[("E57_DLL", "")],
         include_dirs=include_dirs,
         libraries=libraries,
