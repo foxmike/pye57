@@ -47,6 +47,11 @@ if platform.system() == "Windows":
 else:
     libraries.append("xerces-c")
 
+#mike
+print("Debugging libE57_cpp paths:")
+for path in libE57_cpp:
+    print(path)
+
 ext_modules = [
     Pybind11Extension(
         "pye57.libe57",
