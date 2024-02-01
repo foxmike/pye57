@@ -105,6 +105,13 @@ class BuildExt(build_ext):
 with open(HERE / "README.md") as f:
     long_description = "\n" + f.read()
 
+HERE = Path(__file__).parent
+about = {}
+with open(HERE / "src" / "pye57" / "__version__.py") as f:
+    exec(f.read(), about)
+
+about = {'__version__': '0.0.1'}
+
 print("About dict:", about)
 
 setup(
