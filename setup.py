@@ -10,8 +10,11 @@ from setuptools import setup
 
 from pathlib import Path
 
-# Define HERE as the directory containing this script
 HERE = Path(__file__).parent
+about = {}
+with open(HERE / "src" / "pye57" / "__version__.py") as f:
+    exec(f.read(), about)
+version = about["__version__"]
 
 # Assuming HERE is already defined as Path(__file__).parent
 libE57_cpp = sorted(map(str, (HERE / "libE57Format" / "src").glob("*.cpp")))
